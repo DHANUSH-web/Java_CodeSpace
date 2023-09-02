@@ -87,9 +87,14 @@ class Main {
 
     // Insert a value
     public static void insert() {
-        System.out.print("Enter a value: ");
-        int value = sc.nextInt();
-        list.addLast(value);
+        if (list.size() == 20) {
+            System.out.print("Enter a value: ");
+            int value = sc.nextInt();
+            list.addLast(value);
+        }
+
+        else
+            System.out.println("LinkedList is full.. please delete some items add new items");
     }
 
     // Delete a value
