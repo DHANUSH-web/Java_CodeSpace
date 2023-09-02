@@ -87,7 +87,7 @@ class Main {
 
     // Insert a value
     public static void insert() {
-        if (list.size() == 20) {
+        if (list.size() < 20) {
             System.out.print("Enter a value: ");
             int value = sc.nextInt();
             list.addLast(value);
