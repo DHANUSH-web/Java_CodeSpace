@@ -22,6 +22,15 @@ bin/
 /nbdist/
 /.nb-gradle/
 
+### Executable Applications ###
+*.exe
+*.msi
+*.sh
+*.bat
+*.App
+*.img
+*.dmg
+
 ### VS Code ###
 .vscode/
 .fleet/
