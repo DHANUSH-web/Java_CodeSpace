@@ -10,10 +10,10 @@ public class Main {
         String[] arr = values.split(" ");
         
         // Initialize the LinkedList
-        CircularLinkedList<Integer> linkedList = new CircularLinkedList<Integer>();
+        DoublyLinkedList<String> linkedList = new DoublyLinkedList<String>();
 
         for (String value : arr)
-            linkedList.addLast(Integer.parseInt(value));
+            linkedList.addLast(value);
 
         linkedList.printLinkedList();
         sc.close();
