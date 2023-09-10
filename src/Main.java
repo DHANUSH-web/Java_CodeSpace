@@ -1,13 +1,21 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        LinkedList<Integer> linkedList = new LinkedList<>();
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter values separated by space: ");
+        String values = sc.nextLine();
 
-        linkedList.addFirst(1);
-        linkedList.addLast(2);
-
-        linkedList.deleteNode(3);
+        // split the values by space and store them in array
+        String[] arr = values.split(" ");
         
+        // Initialize the LinkedList
+        CircularLinkedList<Integer> linkedList = new CircularLinkedList<Integer>();
+
+        for (String value : arr)
+            linkedList.addLast(Integer.parseInt(value));
+
         linkedList.printLinkedList();
-        System.out.println("Length of Linked List: " + linkedList.size());
+        sc.close();
     }
 }
