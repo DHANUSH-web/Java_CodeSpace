@@ -1,21 +1,83 @@
-import java.util.Scanner;
+// CODE: 1
 
-public class Main {
+import java.util.Objects;
+
+class Main {
+    public static boolean checkSequence(CircularLinkedList<Integer>.Node<Integer> L, CircularLinkedList<Integer>.Node<Integer> M, int lengthM) {
+        if (L == null && M == null)
+            return true;
+
+        CircularLinkedList<Integer>.Node<Integer> currentL = L;
+
+        for (int i = 0; i < lengthM; i++) {
+            CircularLinkedList<Integer>.Node<Integer> currentM = M;
+            boolean matched = true;
+
+            while (currentL != null && currentM != null) {
+                if (!Objects.equals(currentL.data, currentM.data)) {
+                    matched = false;
+                    break;
+                }
+
+//                System.out.println("CurrentL Data: " + currentL.data + " CurrentM Data: " + currentM.data);
+
+                currentL = currentL.next;
+                currentM = currentM.next;
+            }
+
+            if (matched && currentL == null && currentM == null)
+                return true;
+
+            M = M.next;
+        }
+
+        return false;
+    }
+
+    public static boolean areSequence(CircularLinkedList<Integer>.Node<Integer> L, CircularLinkedList<Integer>.Node<Integer> M) {
+        if (L == null && M == null)
+            return true;
+
+        CircularLinkedList<Integer>.Node<Integer> currentL = L;
+        CircularLinkedList<Integer>.Node<Integer> currentM = M;
+
+        do {
+            if (currentL == null && currentM == null)
+                return true;
+
+            if (currentL == null || currentM == null || currentL.data != currentM.data)
+                return false;
+
+            currentL = currentL.next;
+            currentM = currentM.next;
+
+        } while (currentL != L || currentM != M);
+
+        return false;
+    }
+
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter values separated by space: ");
-        String values = sc.nextLine();
+        CircularLinkedList<Integer> L = new CircularLinkedList<>();
+        CircularLinkedList<Integer> M = new CircularLinkedList<>();
 
-        // split the values by space and store them in array
-        String[] arr = values.split(" ");
-        
-        // Initialize the LinkedList
-        DoublyLinkedList<String> linkedList = new DoublyLinkedList<String>();
+        // add nodes to L
+        L.addLast(10);
+        L.addLast(20);
+        L.addLast(30);
+        L.addLast(40);
+        L.addLast(L.getFirst());
 
-        for (String value : arr)
-            linkedList.addLast(value);
+        // add nodes to M
+        M.addLast(20);
+        M.addLast(30);
+        M.addLast(40);
+        M.addLast(10);
+        M.addLast(M.getFirst());
 
-        linkedList.printLinkedList();
-        sc.close();
+        // check for sequence
+        boolean isSequence = checkSequence(L.tail.next, M.tail.next, M.size);
+//        boolean isSequence = areSequence(L.tail.next, M.tail.next);
+
+        System.out.println((isSequence ? "They " : "They don't ") + "have the same sequence");
     }
 }

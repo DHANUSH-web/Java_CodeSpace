@@ -81,13 +81,11 @@ public class CircularLinkedList<E> {
     public void printLinkedList() {
         Node<E> current = this.tail.next;
 
-        if (this.tail != null) {
-            do {
-                System.out.print(current.data + " ");
-                current = current.next;
-            } while (current != this.tail.next);
+        do {
+            System.out.print(current.data + " ");
+            current = current.next;
+        } while (current != this.tail.next);
 
-            System.out.print("\n");
-        }
+        System.out.print("\n");
     }
 }
