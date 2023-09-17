@@ -66,6 +66,10 @@ class Stack<E> implements IStack<E> {
         return this.array[this.top];
     }
 
+    public E getValue(int index) {
+        return this.array[index];
+    }
+
     @Override
     public void printStack() {
         for (int i = 0; i < this.top + 1; i++)
