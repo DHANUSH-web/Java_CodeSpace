@@ -28,5 +28,6 @@ public class Problem3 {
 
         System.out.print("Reversed Linked List: ");
         reversed.printLinkedList();
+        sc.close();
     }
 }
