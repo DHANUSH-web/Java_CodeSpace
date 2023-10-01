@@ -1,7 +1,7 @@
 class Main {
     public static void main(String[] args) {
         CircularLinkedList<Integer> nodes = new CircularLinkedList<>();
-        Queue<Integer> queue = new Queue<>(5);
+        Queue<Integer> queue = new Queue<>();
 
         for (int i = 20; i < 25; i++) {
             nodes.addLast(i);
