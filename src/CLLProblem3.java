@@ -9,6 +9,7 @@ class CLLProblem3 {
         int size = sc.nextInt();
 
         System.out.print("Enter the inputs for CLL: ");
+        
         for (int i = 0; i < size; i++)
             nodes.addFirst(sc.nextInt());   // addFirst is the best way to reverse Linked List
 

@@ -1,4 +1,4 @@
-public class CircularLinkedList<E> {
+public class CircularLinkedList<E extends Comparable<E>> {
     // Create Node Class
     public class Node<U> {
         public U data;
@@ -76,6 +76,23 @@ public class CircularLinkedList<E> {
         this.size--;
 
         return head.data;       // return the value of the node removed
+    }
+
+    // FindMax to search the largest item in the Circular Linked List
+    public E FindMax() {
+        if (this.tail.next == null)
+            return null;
+
+        Node<E> current = this.tail.next;
+        E max = current.data;
+
+        do {
+            if (current.data.compareTo(max) > 0)
+                max = current.data;
+            current = current.next;
+        } while (current != this.tail.next);
+
+        return max;
     }
 
     public void printLinkedList() {
