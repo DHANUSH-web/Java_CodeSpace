@@ -102,4 +102,32 @@ public class DoublyLinkedList<E> {
             System.out.print("\n");
         }
     }
+
+    private class DIterator<T> implements Iterator<T> {
+        private Node<T> current;
+
+        public DIterator(Node<T> head) {
+            current = head.next;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return current.next != null;
+        }
+
+        @Override
+        public T next() {
+            if (hasNext()) {
+                T data = current.data;
+                current = current.next;
+                return data;
+            }
+
+            return null;
+        }
+    }
+
+    public Iterator<E> iterator() {
+        return new DIterator<E>(this.head);
+    }
 }

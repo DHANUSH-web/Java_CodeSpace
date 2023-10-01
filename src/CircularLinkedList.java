@@ -87,7 +87,7 @@ public class CircularLinkedList<E extends Comparable<E>> {
         E max = current.data;
 
         do {
-            if (current.data.compareTo(max) > 0)
+            if (current.data.compareTo(max) == 1)   // -1 = Lesser, 0 = Equal, 1 = Greater
                 max = current.data;
             current = current.next;
         } while (current != this.tail.next);
