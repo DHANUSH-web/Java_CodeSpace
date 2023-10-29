@@ -1,27 +1,22 @@
-public class Main {
+import java.util.Scanner;
+
+class Main {
     public static void main(String[] args) {
-        // Create a hash table with a size of 10
-        HashTable hashTable = new HashTable(10);
+        BinaryTree<Integer> tree = new BinaryTree<Integer>(1);
+        Scanner sc = new Scanner(System.in);
 
-        // Insert key-value pairs into the hash table
-        hashTable.insert("Alice", "123-456-7890");
-        hashTable.insert("Bob", "234-567-8901");
-        hashTable.insert("Charlie", "345-678-9012");
+        System.out.print("Enter the size of tree: ");
+        int size = sc.nextInt();
 
-        // Retrieve values using keys
-        String aliceNumber = hashTable.search("Alice");
-        String bobNumber = hashTable.search("Bob");
-        String davidNumber = hashTable.search("David"); // Returns null for non-existing key
+        System.out.print("Enter the values of nodes: ");
+        for (int i = 0; i < size; i++) {
+            BinaryTree<Integer> node = new BinaryTree<Integer>(sc.nextInt());
+            tree.insert(node);
+        }
 
-        // Output retrieved values
-        System.out.println("Alice's number: " + aliceNumber); // Output: 123-456-7890
-        System.out.println("Bob's number: " + bobNumber); // Output: 234-567-8901
-        System.out.println("David's number: " + davidNumber); // Output: null
+        tree.inorderTraverse();
 
-        // print the values using Iterator
-        Iterator<String> it = hashTable.iterator();
-
-        while (it.hasNext())
-            System.out.println(it.next());
+        System.out.println("Size of the tree is: " + tree.getSize());
+        sc.close();
     }
 }
